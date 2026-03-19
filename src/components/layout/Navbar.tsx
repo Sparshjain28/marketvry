@@ -49,24 +49,24 @@ export const Navbar = () => {
     <nav
       className={`fixed inset-x-0 top-0 z-[90] transition-all duration-500 ${isScrolled
           ? "bg-white shadow-[0_4px_30px_rgba(0,0,0,0.1)] py-1"
-          : "bg-transparent py-4"
+          : "bg-white shadow-[0_1px_0_rgba(0,0,0,0.06)] py-2"
         }`}
     >
-      {/* Top bar - only visible on white navbar state or optional */}
+      {/* Top bar - hides on scroll */}
       <AnimatePresence>
         {!isScrolled && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="border-b border-white/10 hidden lg:block overflow-hidden"
+            className="border-b border-gray-100 hidden lg:block overflow-hidden"
           >
             <div className="container-custom">
-              <div className="flex items-center justify-between py-2 text-[11px] text-white/80 font-medium">
+              <div className="flex items-center justify-between py-2 text-[11px] text-gray-500 font-medium">
                 <span>🚀 Innovating Digital, Empowering Your Growth with AI</span>
                 <div className="flex items-center gap-6">
-                  <a href="tel:+918955123551" className="hover:text-white transition-colors">+91 8955123551</a>
-                  <a href="mailto:support@marketvry.com" className="hover:text-white transition-colors">support@marketvry.com</a>
+                  <a href="tel:+918955123551" className="hover:text-[hsl(var(--red))] transition-colors">+91 8955123551</a>
+                  <a href="mailto:support@marketvry.com" className="hover:text-[hsl(var(--red))] transition-colors">support@marketvry.com</a>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@ export const Navbar = () => {
           {/* Logo - Consistently sized */}
           <Link 
             to="/" 
-            className={`flex items-center flex-shrink-0 transition-all duration-500 h-14 ${!isScrolled && "brightness-0 invert"}`}
+            className="flex items-center flex-shrink-0 transition-all duration-500 h-12"
           >
             <img
               src={logo}
@@ -101,7 +101,7 @@ export const Navbar = () => {
                   to={link.path}
                   className={`flex items-center gap-1 text-sm font-bold tracking-tight transition-all duration-300 ${location.pathname === link.path
                       ? "text-[hsl(var(--red))]"
-                      : isScrolled ? "text-gray-900 hover:text-[hsl(var(--red))]" : "text-white hover:text-white/80"
+                      : "text-gray-900 hover:text-[hsl(var(--red))]"
                     }`}
                 >
                   {link.name}
@@ -117,7 +117,7 @@ export const Navbar = () => {
                       transition={{ duration: 0.2 }}
                       className="absolute top-full left-0 pt-4"
                     >
-                      <div className="bg-white rounded-2xl shadow-2xl py-3 min-w-[240px] border border-gray-100 overflow-hidden text-gray-900">
+                      <div className="bg-white rounded-2xl shadow-2xl py-3 min-w-[240px] border border-gray-100 overflow-hidden">
                         {link.submenu.map((subItem) => (
                           <Link
                             key={subItem.name}
@@ -141,29 +141,29 @@ export const Navbar = () => {
               <>
                 <Link
                   to="/profile"
-                  className={`flex items-center gap-2 transition-colors ${isScrolled ? "text-gray-900" : "text-white"}`}
+                  className="flex items-center gap-2 text-gray-900 transition-colors"
                 >
-                  <div className="w-9 h-9 rounded-full bg-gray-100/10 flex items-center justify-center overflow-hidden border border-white/20">
+                  <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden border border-gray-200">
                     {profile?.avatar_url ? (
                       <img src={profile.avatar_url} alt="Avatar" className="w-full h-full object-cover" />
                     ) : (
                       <User className="w-4 h-4" />
                     )}
                   </div>
-                  <span className="font-bold text-sm tracking-tight">{profile?.full_name || "Profile"}</span>
+                  <span className="font-bold text-sm">{profile?.full_name || "Profile"}</span>
                 </Link>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={signOut}
-                  className={isScrolled ? "text-gray-400 hover:text-[hsl(var(--red))]" : "text-white/60 hover:text-white"}
+                  className="text-gray-400 hover:text-[hsl(var(--red))]"
                 >
                   <LogOut className="w-4 h-4" />
                 </Button>
               </>
             ) : (
               <Link to="/contact">
-                <Button className={`btn-hero h-10 px-6 rounded-xl shadow-[0_10px_20px_rgba(255,51,51,0.2)] hover:scale-105 transition-all font-bold text-xs ${!isScrolled && "bg-white text-gray-900 hover:bg-gray-100 border-none shadow-none"}`}>
+                <Button className="btn-hero h-10 px-6 rounded-xl shadow-[0_10px_20px_rgba(255,51,51,0.2)] hover:scale-105 transition-all font-bold text-xs">
                   Request Free Quote
                 </Button>
               </Link>

@@ -15,7 +15,7 @@ const stats = [
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex flex-col min-h-[500px] md:min-h-[600px] mt-20 md:mt-24 overflow-hidden">
+    <section className="relative flex flex-col min-h-[500px] md:min-h-[600px] mt-28 md:mt-32 overflow-hidden">
       {/* ── Background Video/Image ── */}
       <div className="absolute inset-0 z-0">
         <video

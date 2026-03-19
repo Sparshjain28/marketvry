@@ -70,28 +70,34 @@ export const ServicesSection = () => {
           </div>
         </motion.div>
 
-        {/* Numbered Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        {/* Dark Mode Service Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {services.map((service, index) => (
             <motion.div
               key={service.number}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Link to={service.path} className="block h-full">
-                <div className="service-number-card h-full group">
-                  <div className="flex items-start justify-between mb-2">
-                    <span className="service-num">{service.number}</span>
-                    <div className="w-8 h-8 rounded-full border border-[hsl(var(--red)/0.15)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all bg-red-50">
-                      <ArrowRight className="w-4 h-4 text-[hsl(var(--red))]" />
+                <div className="relative overflow-hidden rounded-3xl bg-[hsl(var(--navy))] p-10 h-full group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(255,51,51,0.15)] border border-white/5 hover:border-[hsl(var(--red)/0.3)]">
+                  {/* Bottom accent bar */}
+                  <div className="absolute bottom-0 left-0 w-12 h-1 bg-[hsl(var(--red))] transition-all duration-500 group-hover:w-full" />
+                  
+                  <div className="flex items-start justify-between mb-8">
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-[hsl(var(--red)/0.15)] transition-all duration-500">
+                      <span className="text-2xl font-black text-[hsl(var(--red))]">
+                        {service.number}
+                      </span>
                     </div>
+                    <ArrowRight className="w-6 h-6 text-white/20 group-hover:text-[hsl(var(--red))] group-hover:translate-x-1 transition-all" />
                   </div>
+                  
                   <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 group-hover:text-[hsl(var(--red))] transition-colors">
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[hsl(var(--red))] transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">
+                    <p className="text-white/60 leading-relaxed text-lg font-light">
                       {service.description}
                     </p>
                   </div>

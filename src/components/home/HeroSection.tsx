@@ -1,42 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import useEmblaCarousel from "embla-carousel-react";
-
-const slides = [
-  {
-    id: 1,
-    tag: "Digital Marketing",
-    headline: "Innovating Digital,",
-    headlineAccent: "Empowering Your Growth",
-    sub: "with AI",
-    description:
-      "Data-driven strategies, SEO, social media & performance marketing that deliver measurable results.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop",
-  },
-  {
-    id: 2,
-    tag: "WhatsApp Marketing",
-    headline: "Reach Customers",
-    headlineAccent: "Where They Are",
-    sub: "with WhatsApp",
-    description:
-      "WhatsApp marketing with 98% open rates. Official API, AI automation, and bulk messaging solutions.",
-    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1920&h=1080&fit=crop",
-  },
-  {
-    id: 3,
-    tag: "Growth Strategy",
-    headline: "Scale Your Brand,",
-    headlineAccent: "Drive Real Growth",
-    sub: "with Strategy",
-    description:
-      "Comprehensive digital solutions from SEO to AI agents that accelerate your business growth.",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&h=1080&fit=crop",
-  },
-];
+import heroVideo from "@/assets/7579959-hd_2048_1080_25fps.mp4";
 
 const stats = [
   { value: "250+", label: "Projects Handled" },
@@ -48,196 +14,107 @@ const stats = [
 ];
 
 export const HeroSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
-  const scrollTo = useCallback((i: number) => emblaApi && emblaApi.scrollTo(i), [emblaApi]);
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-    return () => { emblaApi.off("select", onSelect); };
-  }, [emblaApi, onSelect]);
-
-  useEffect(() => {
-    if (!emblaApi || !isAutoPlaying) return;
-    const id = setInterval(() => emblaApi.scrollNext(), 5000);
-    return () => clearInterval(id);
-  }, [emblaApi, isAutoPlaying]);
-
   return (
-    <section
-      className="relative flex flex-col"
-      onMouseEnter={() => setIsAutoPlaying(false)}
-      onMouseLeave={() => setIsAutoPlaying(true)}
-    >
-      {/* ── Slides ── */}
-      <div ref={emblaRef} className="w-full overflow-hidden">
-        <div className="flex">
-          {slides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className="relative flex-[0_0_100%] min-w-0 min-h-[92vh] flex items-center"
-            >
-              {/* BG image */}
-              <div className="absolute inset-0">
-                <img
-                  src={slide.image}
-                  alt={slide.tag}
-                  className="w-full h-full object-cover"
-                />
-                {/* Dark overlay — keeps hero dark but site sections are white */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[rgba(10,12,20,0.90)] via-[rgba(10,12,20,0.75)] to-[rgba(10,12,20,0.40)]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(5,8,18,0.7)] via-transparent to-transparent" />
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 w-full pt-24">
-                <div className="container-custom">
-                  <AnimatePresence mode="wait">
-                    {selectedIndex === index && (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="max-w-3xl"
-                      >
-                        {/* Badge */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.1 }}
-                          className="mb-5"
-                        >
-                          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[hsl(var(--red)/0.15)] border border-[hsl(var(--red)/0.3)] text-[hsl(1_85%_72%)]">
-                            <span className="w-2 h-2 bg-[hsl(var(--red))] rounded-full animate-pulse" />
-                            {slide.tag}
-                          </span>
-                        </motion.div>
-
-                        {/* Headline */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 30 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.6, delay: 0.15 }}
-                          className="mb-6"
-                        >
-                          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.05] tracking-tight text-white">
-                            {slide.headline}
-                            <br />
-                            <span className="text-gradient">{slide.headlineAccent}</span>
-                            <br />
-                            <span className="text-white/80">{slide.sub}</span>
-                          </h1>
-                        </motion.div>
-
-                        {/* Desc */}
-                        <motion.p
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.25 }}
-                          className="text-lg text-white/65 mb-10 max-w-xl leading-relaxed"
-                        >
-                          {slide.description}
-                        </motion.p>
-
-                        {/* CTA */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.35 }}
-                          className="flex flex-col sm:flex-row gap-4"
-                        >
-                          <Link to="/contact">
-                            <Button className="btn-hero group w-full sm:w-auto text-base px-8 py-5">
-                              Get Started
-                              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                            </Button>
-                          </Link>
-                          <Link to="/about">
-                            <Button
-                              variant="outline"
-                              className="w-full sm:w-auto px-8 py-5 text-base bg-white/8 backdrop-blur-sm border-2 border-white/25 hover:border-white/50 hover:bg-white/15 text-white group transition-all rounded-full"
-                            >
-                              Explore More
-                              <ArrowUpRight className="w-5 h-5 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                            </Button>
-                          </Link>
-                        </motion.div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+    <section className="relative flex flex-col min-h-[500px] md:min-h-[600px] mt-20 md:mt-24 overflow-hidden">
+      {/* ── Background Video/Image ── */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+        
+        {/* Subtle professional overlay for better visibility */}
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
       </div>
 
-      {/* ── Carousel Controls ── */}
-      <div className="absolute bottom-[108px] sm:bottom-[120px] left-0 right-0 z-20">
+      {/* ── Content ── */}
+      <div className="relative z-10 flex-1 flex flex-col items-start justify-center text-left px-4">
         <div className="container-custom">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex gap-2">
-                {slides.map((_, i) => (
-                  <button key={i} onClick={() => scrollTo(i)}>
-                    <div
-                      className={`h-1.5 rounded-full transition-all duration-500 ${
-                        selectedIndex === i
-                          ? "w-10 bg-[hsl(var(--red))]"
-                          : "w-6 bg-white/30 hover:bg-white/50"
-                      }`}
-                    />
-                  </button>
-                ))}
-              </div>
-              <span className="text-xs text-white/40 font-mono hidden sm:block tracking-wider">
-                0{selectedIndex + 1} / 0{slides.length}
+          <div className="max-w-4xl">
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-6"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-black bg-[hsl(var(--red))] text-white shadow-[0_0_20px_rgba(255,51,51,0.4)] uppercase tracking-widest">
+                Digital Marketing & AI Agency
               </span>
-            </div>
+            </motion.div>
 
-            <div className="flex gap-2">
-              <button
-                onClick={scrollPrev}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/8 flex items-center justify-center text-white hover:bg-[hsl(var(--red))] hover:border-[hsl(var(--red))] transition-all"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={scrollNext}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/8 flex items-center justify-center text-white hover:bg-[hsl(var(--red))] hover:border-[hsl(var(--red))] transition-all"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-4xl md:text-6xl lg:text-8xl font-black text-white mb-6 leading-[1.05] tracking-tighter"
+            >
+              Innovating Digital, <br />
+              Empowering Your <span className="text-gradient">Growth with AI</span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, x: -25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-base md:text-xl text-white/80 mb-10 max-w-2xl leading-relaxed font-medium"
+            >
+              We transform brands through data-driven marketing, 
+              creative branding, and scalable tech solutions.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-start gap-4"
+            >
+              <Link to="/contact">
+                <Button className="btn-hero group px-10 py-7 text-lg rounded-xl shadow-2xl hover:scale-105 transition-all">
+                  Get Started Now
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link to="/portfolio">
+                <Button
+                  variant="outline"
+                  className="px-10 py-7 text-lg bg-white/5 backdrop-blur-xl border border-white/20 hover:bg-white/10 text-white transition-all rounded-xl"
+                >
+                  View Our Projects
+                </Button>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>
 
-      {/* ── Stats Band ── */}
-      <div className="relative z-20 bg-white border-t border-gray-100 shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
-        <div className="container-custom py-6 sm:py-8">
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 divide-x divide-gray-100">
-            {stats.map((stat) => (
-              <div key={stat.label} className="stat-band-item px-2">
-                <span className="stat-band-num">{stat.value}</span>
-                <span className="stat-band-label">{stat.label}</span>
-              </div>
+      {/* ── Logo Wall at bottom ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="relative z-20 bg-black/20 backdrop-blur-sm border-t border-white/5 py-6"
+      >
+        <div className="container-custom">
+          <div className="flex flex-wrap items-center justify-start gap-8 md:gap-16 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+            {["Winds", "Tanisha", "TechGlobal", "Nexus", "Vision"].map((brand) => (
+              <span key={brand} className="text-white text-sm md:text-base font-black uppercase tracking-widest cursor-default">
+                {brand}
+              </span>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

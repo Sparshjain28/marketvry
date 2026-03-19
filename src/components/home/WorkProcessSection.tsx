@@ -8,28 +8,28 @@ const steps = [
     icon: Search,
     title: "Discovery & Strategy",
     description:
-      "We start by understanding your long-term business goals and craft a detailed technology roadmap that aligns innovation with growth.",
+      "We start by understanding your business goals and craft a detailed digital roadmap that aligns innovation with growth.",
   },
   {
     number: "02",
     icon: Palette,
     title: "Design & Prototyping",
     description:
-      "Our team creates intuitive, beautiful interfaces and interactive prototypes that align perfectly with your brand vision.",
+      "Our team creates intuitive, beautiful interfaces and interactive prototypes that reflect your brand's unique identity.",
   },
   {
     number: "03",
     icon: Rocket,
     title: "Incorporation & Growth",
     description:
-      "We build scalable, secure solutions with sophisticated features delivering performance and connectivity across every platform.",
+      "We build scalable, high-performance solutions designed to accelerate your business growth across all platforms.",
   },
   {
     number: "04",
     icon: ShieldCheck,
     title: "Testing & Deployment",
     description:
-      "After rigorous testing for functionality, speed, and reliability, we deploy seamlessly for the best user experience possible.",
+      "After rigorous quality assurance, we deploy your solution seamlessly, ensuring the best possible user experience from day one.",
   },
 ];
 

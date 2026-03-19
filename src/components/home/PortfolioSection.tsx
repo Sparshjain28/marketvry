@@ -79,7 +79,7 @@ export const PortfolioSection = () => {
           <div>
             <p className="section-tag mb-4">Check Out Our Work</p>
             <h2 className="section-heading">
-              Featured <span className="text-gradient">Projects</span>
+              Our <span className="text-gradient">Featured Projects</span>
             </h2>
           </div>
           <Link

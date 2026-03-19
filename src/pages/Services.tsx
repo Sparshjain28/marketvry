@@ -129,7 +129,7 @@ const Services = () => {
             alt="Services" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/90 to-navy/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--navy))/0.95] via-[hsl(var(--navy))/0.9] to-[hsl(var(--navy))/0.85]" />
         </div>
         <div className="container-custom relative z-10">
           <motion.div
@@ -137,7 +137,7 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <span className="text-accent font-semibold tracking-wide uppercase text-sm">
+            <span className="text-[hsl(var(--red))] font-semibold tracking-wide uppercase text-sm">
               Our Services
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-4 mb-6">
@@ -173,7 +173,7 @@ const Services = () => {
                       alt={service.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--dark))/0.4] to-transparent" />
                   </div>
                 </div>
 
@@ -188,8 +188,8 @@ const Services = () => {
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-accent" />
+                        <div className="w-6 h-6 rounded-full bg-[hsl(var(--red)/0.12)] flex items-center justify-center flex-shrink-0">
+                          <Check className="w-4 h-4 text-[hsl(var(--red))]" />
                         </div>
                         <span className="text-foreground">{feature}</span>
                       </li>
@@ -217,7 +217,7 @@ const Services = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-accent font-semibold tracking-wide uppercase text-sm">
+            <span className="text-[hsl(var(--red))] font-semibold tracking-wide uppercase text-sm">
               Our Process
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4">
@@ -240,7 +240,7 @@ const Services = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-5xl font-bold text-accent/20 mb-4">{item.step}</div>
+                <div className="text-5xl font-bold text-[hsl(var(--red)/0.15)] mb-4">{item.step}</div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">{item.title}</h3>
                 <p className="text-muted-foreground">{item.desc}</p>
               </motion.div>
@@ -254,7 +254,7 @@ const Services = () => {
         title="Ready to Get Started?"
         description="Let's discuss your project and create a strategy that drives real results."
         buttonText="Request a Quote"
-        variant="accent"
+        variant="gradient"
       />
     </Layout>
   );

@@ -8,8 +8,7 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "CEO, TechStart Inc.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face",
-    content:
-      "Working with Marketvry transformed our online presence completely. Their strategic approach to digital marketing increased our leads by 200% in just 6 months.",
+    content: "Working with Marketvry transformed our online presence completely. Their strategic approach to digital marketing increased our leads by 200% in just 6 months.",
     rating: 5,
   },
   {
@@ -17,8 +16,7 @@ const testimonials = [
     name: "Michael Chen",
     role: "Founder, GreenLeaf",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
-    content:
-      "The website they built for us is not just beautiful but converts visitors into customers. Their attention to UX details is remarkable.",
+    content: "The website they built for us is not just beautiful but converts visitors into customers. Their attention to UX details is remarkable and the results speak for themselves.",
     rating: 5,
   },
   {
@@ -26,8 +24,7 @@ const testimonials = [
     name: "Emily Davis",
     role: "Marketing Director, FoodCo",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
-    content:
-      "Their SEO expertise helped us rank #1 for our key terms. The team is professional, responsive, and truly understands digital marketing.",
+    content: "Their SEO expertise helped us rank #1 for our key terms within 4 months. The team is professional, responsive, and truly understands digital marketing.",
     rating: 5,
   },
   {
@@ -35,8 +32,7 @@ const testimonials = [
     name: "David Miller",
     role: "CTO, InnovateTech",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
-    content:
-      "From concept to launch, the development team exceeded our expectations. The web application they built handles millions of users flawlessly.",
+    content: "From concept to launch, the development team exceeded our expectations. The web application they built handles millions of users flawlessly.",
     rating: 5,
   },
 ];
@@ -46,47 +42,39 @@ export const TestimonialsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  const next = () => setCurrentIndex((p) => (p + 1) % testimonials.length);
+  const prev = () => setCurrentIndex((p) => (p - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section ref={ref} className="py-12 md:py-16 bg-navy">
+    <section ref={ref} className="section-padding bg-gray-section">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          className="text-center mb-10"
         >
-          <span className="text-accent font-semibold tracking-wide uppercase text-sm">
-            Testimonials
-          </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground mt-2 mb-3">
-            What Our Clients Say
+          <p className="section-tag mb-4 justify-center">Client Feedback</p>
+          <h2 className="section-heading max-w-xl mx-auto">
+            See What Our{" "}
+            <span className="text-gradient">Customers Say</span>
           </h2>
-          <p className="text-primary-foreground/70 max-w-2xl mx-auto">
-            Don't just take our word for it. Hear from the businesses we've helped succeed.
+          <p className="section-subtext mt-4">
+            Don't just take our word for it — hear from the businesses we've helped succeed.
           </p>
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Main Testimonial */}
+        <div className="max-w-3xl mx-auto">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.5 }}
-            className="bg-primary-foreground/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-primary-foreground/10"
+            exit={{ opacity: 0, x: -40 }}
+            transition={{ duration: 0.4 }}
+            className="testimonial-card"
           >
-            <Quote className="w-8 h-8 text-accent mb-4" />
-            
-            <p className="text-lg md:text-xl text-primary-foreground leading-relaxed mb-6">
+            <Quote className="w-8 h-8 text-[hsl(var(--red))] mb-4 opacity-60" />
+            <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6 italic">
               "{testimonials[currentIndex].content}"
             </p>
 
@@ -95,52 +83,49 @@ export const TestimonialsSection = () => {
                 <img
                   src={testimonials[currentIndex].image}
                   alt={testimonials[currentIndex].name}
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover border-2 border-red-100"
                 />
                 <div>
-                  <h4 className="font-semibold text-primary-foreground text-sm">
+                  <h4 className="font-bold text-gray-900 text-sm">
                     {testimonials[currentIndex].name}
                   </h4>
-                  <p className="text-primary-foreground/60 text-xs">
-                    {testimonials[currentIndex].role}
-                  </p>
+                  <p className="text-gray-500 text-xs">{testimonials[currentIndex].role}</p>
                 </div>
               </div>
-
               <div className="flex gap-1">
                 {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-accent fill-accent" />
+                  <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
                 ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Navigation */}
-          <div className="flex justify-center gap-3 mt-6">
+          {/* Controls */}
+          <div className="flex justify-center items-center gap-4 mt-8">
             <button
-              onClick={prevTestimonial}
-              className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors"
+              onClick={prev}
+              className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-[hsl(var(--red))] hover:border-[hsl(var(--red))] hover:text-white transition-all text-gray-600 shadow-sm"
             >
-              <ChevronLeft className="w-5 h-5 text-primary-foreground" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, index) => (
+            <div className="flex gap-2">
+              {testimonials.map((_, i) => (
                 <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "bg-accent w-8"
-                      : "bg-primary-foreground/30"
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === currentIndex
+                      ? "w-8 bg-[hsl(var(--red))]"
+                      : "w-2 bg-gray-300 hover:bg-gray-400"
                   }`}
                 />
               ))}
             </div>
             <button
-              onClick={nextTestimonial}
-              className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors"
+              onClick={next}
+              className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-[hsl(var(--red))] hover:border-[hsl(var(--red))] hover:text-white transition-all text-gray-600 shadow-sm"
             >
-              <ChevronRight className="w-5 h-5 text-primary-foreground" />
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>

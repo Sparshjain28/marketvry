@@ -38,14 +38,14 @@ const Portfolio = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-navy pt-32 pb-20">
+      <section className="bg-[hsl(var(--navy))] pt-32 pb-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <span className="text-accent font-semibold tracking-wide uppercase text-sm">
+            <span className="text-[hsl(var(--red))] font-semibold tracking-wide uppercase text-sm">
               Our Work
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-4 mb-6">
@@ -74,8 +74,8 @@ const Portfolio = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeCategory === category
-                    ? "bg-accent text-accent-foreground"
-                    : "bg-secondary text-foreground hover:bg-accent/10"
+                    ? "bg-[hsl(var(--red))] text-white"
+                    : "bg-gray-section text-foreground hover:bg-[hsl(var(--red)/0.1)]"
                 }`}
               >
                 {category}
@@ -104,7 +104,7 @@ const Portfolio = () => {
                   className="group cursor-pointer"
                   onClick={() => setSelectedProject(project)}
                 >
-                  <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-secondary">
+                  <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-gray-section">
                     {project.image_url && (
                       <img
                         src={project.image_url}
@@ -115,7 +115,7 @@ const Portfolio = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-0 left-0 right-0 p-6">
                         {project.category && (
-                          <span className="text-accent text-sm font-medium">
+                          <span className="text-[hsl(var(--red))] text-sm font-medium">
                             {project.category}
                           </span>
                         )}
@@ -126,13 +126,13 @@ const Portfolio = () => {
                           {project.description}
                         </p>
                       </div>
-                      <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-accent flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <ArrowUpRight className="w-5 h-5 text-accent-foreground" />
+                      <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[hsl(var(--red))] flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <ArrowUpRight className="w-5 h-5 text-white" />
                       </div>
                     </div>
                   </div>
                   <div className="mt-4">
-                    <h3 className="font-semibold text-foreground group-hover:text-accent transition-colors">
+                    <h3 className="font-semibold text-foreground group-hover:text-[hsl(var(--red))] transition-colors">
                       {project.title}
                     </h3>
                     {project.client && (
@@ -180,7 +180,7 @@ const Portfolio = () => {
               </div>
               <div className="p-8">
                 {selectedProject.category && (
-                  <span className="text-accent text-sm font-medium">{selectedProject.category}</span>
+                  <span className="text-[hsl(var(--red))] text-sm font-medium">{selectedProject.category}</span>
                 )}
                 <h2 className="text-3xl font-bold text-foreground mt-2 mb-4">
                   {selectedProject.title}
@@ -198,7 +198,7 @@ const Portfolio = () => {
                       {selectedProject.technologies.split(',').map((tech: string, i: number) => (
                         <span
                           key={i}
-                          className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm"
+                          className="px-3 py-1 bg-[hsl(var(--red)/0.1)] text-[hsl(var(--red))] rounded-full text-sm"
                         >
                           {tech.trim()}
                         </span>
@@ -211,7 +211,7 @@ const Portfolio = () => {
                     href={selectedProject.project_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-accent hover:underline"
+                    className="inline-flex items-center gap-2 text-[hsl(var(--red))] hover:underline"
                   >
                     View Live Project <ExternalLink className="w-4 h-4" />
                   </a>
@@ -223,7 +223,7 @@ const Portfolio = () => {
       </AnimatePresence>
 
       {/* CTA */}
-      <section className="section-padding bg-secondary">
+      <section className="section-padding bg-gray-section">
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

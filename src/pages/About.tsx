@@ -63,7 +63,7 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <span className="text-accent font-semibold tracking-wide uppercase text-sm">
+            <span className="text-[hsl(var(--red))] font-semibold tracking-wide uppercase text-sm">
               About Marketvry
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-4 mb-6">
@@ -118,7 +118,7 @@ const About = () => {
                 alt="Our team at work"
                 className="rounded-2xl shadow-2xl"
               />
-              <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-accent text-white p-4 sm:p-6 rounded-2xl shadow-xl">
+              <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-[hsl(var(--red))] text-white p-4 sm:p-6 rounded-2xl shadow-xl">
                 <div className="text-4xl font-bold">10+</div>
                 <div className="text-sm">Years of Excellence</div>
               </div>
@@ -128,7 +128,7 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-secondary">
+      <section className="section-padding bg-gray-section">
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -140,7 +140,7 @@ const About = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">{stat.value}</div>
+                <div className="text-4xl md:text-5xl font-bold text-[hsl(var(--red))] mb-2">{stat.value}</div>
                 <div className="text-sm md:text-base text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
@@ -157,7 +157,7 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-accent font-semibold tracking-wide uppercase text-sm">
+            <span className="text-[hsl(var(--red))] font-semibold tracking-wide uppercase text-sm">
               Our Values
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4 mb-6">
@@ -178,8 +178,8 @@ const About = () => {
                 transition={{ delay: index * 0.1 }}
                 className="bg-card rounded-2xl p-8 card-hover border border-border"
               >
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                  <value.icon className="w-7 h-7 text-accent" />
+                <div className="w-14 h-14 rounded-xl bg-[hsl(var(--red)/0.1)] flex items-center justify-center mb-4">
+                              <value.icon className="w-7 h-7 text-[hsl(var(--red))]" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">
                   {value.title}
@@ -192,7 +192,7 @@ const About = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-secondary">
+      <section className="section-padding bg-gray-section">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -231,8 +231,8 @@ const About = () => {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-center gap-3"
                   >
-                    <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-accent" />
+                    <div className="w-6 h-6 rounded-full bg-[hsl(var(--red)/0.12)] flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-[hsl(var(--red))]" />
                     </div>
                     <span className="text-foreground text-lg">{item}</span>
                   </motion.li>

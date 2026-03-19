@@ -1,114 +1,99 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
-import digitalMarketingImg from "@/assets/services/digital-marketing.jpg";
-import webDevelopmentImg from "@/assets/services/web-development.jpg";
-import brandingImg from "@/assets/services/branding.jpg";
-import seoImg from "@/assets/services/seo.jpg";
-import socialMediaImg from "@/assets/services/social-media.jpg";
-import analyticsImg from "@/assets/services/analytics.jpg";
-
 const services = [
   {
+    number: "01",
     title: "Digital Marketing",
-    description: "Data-driven campaigns that maximize ROI and drive qualified traffic to your business.",
+    description: "Data-driven online strategies to increase brand visibility, engagement, and conversions across all channels.",
     path: "/services/digital-marketing",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
   },
   {
-    title: "Web Development",
-    description: "Custom websites and web applications built with cutting-edge technologies.",
-    path: "/services/web-development",
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop",
-  },
-  {
-    title: "WhatsApp Marketing",
-    description: "Reach customers instantly with WhatsApp's 98% open rate and AI automation.",
-    path: "/services/whatsapp-marketing",
-    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&h=600&fit=crop",
-  },
-  {
-    title: "SEO Services",
-    description: "Boost your visibility and rank higher with our proven SEO strategies.",
-    path: "/services/seo",
-    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&h=600&fit=crop",
-  },
-  {
-    title: "Bulk Messaging",
-    description: "Mass communication via SMS, Email, and Voice Call campaigns.",
-    path: "/services/bulk-messaging",
-    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=600&fit=crop",
-  },
-  {
-    title: "AI Agent Services",
-    description: "Intelligent AI agents that automate support and qualify leads 24/7.",
+    number: "02",
+    title: "App Development",
+    description: "Custom mobile applications designed for performance, scalability, and seamless usability on any platform.",
     path: "/services/ai-agent",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+  },
+  {
+    number: "03",
+    title: "Website Development",
+    description: "Robust, secure websites built for speed, functionality, and reliability — from landing pages to full platforms.",
+    path: "/services/web-development",
+  },
+  {
+    number: "04",
+    title: "WhatsApp Marketing",
+    description: "Reach customers instantly with 98% open rates via the official WhatsApp API and AI-powered automation.",
+    path: "/services/whatsapp-marketing",
+  },
+  {
+    number: "05",
+    title: "SEO Services",
+    description: "Boost your organic visibility with proven on-page, off-page, and technical SEO strategies.",
+    path: "/services/seo",
+  },
+  {
+    number: "06",
+    title: "AI Agent Services",
+    description: "Intelligent AI agents that automate customer support, qualify leads, and drive business growth 24/7.",
+    path: "/services/ai-agent",
   },
 ];
 
 export const ServicesSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="section-padding bg-secondary">
+    <section ref={ref} className="section-padding bg-gray-section">
       <div className="container-custom">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 sm:mb-16 px-2"
+          className="mb-12 sm:mb-16"
         >
-          <span className="text-accent font-semibold tracking-wide uppercase text-xs sm:text-sm">
-            What We Offer
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 sm:mt-4 mb-4 sm:mb-6">
-            Services That Drive Results
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg">
-            From strategy to execution, we provide comprehensive digital solutions 
-            tailored to your unique business goals.
-          </p>
+          <p className="section-tag mb-4">What We Offer</p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <h2 className="section-heading max-w-lg">
+              Our <span className="text-gradient">Services</span>
+            </h2>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 text-[hsl(var(--red))] font-semibold hover:gap-3 transition-all text-sm"
+            >
+              View More Services <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        {/* Numbered Service Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {services.map((service, index) => (
             <motion.div
-              key={service.title}
+              key={service.number}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
             >
-              <Link to={service.path}>
-                <div className="group bg-card rounded-2xl overflow-hidden h-full card-hover border border-border hover:border-accent/30">
-                  {/* Image */}
-                  <div className="relative h-40 sm:h-48 overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <Link to={service.path} className="block h-full">
+                <div className="service-number-card h-full group">
+                  <div className="flex items-start justify-between mb-2">
+                    <span className="service-num">{service.number}</span>
+                    <div className="w-8 h-8 rounded-full border border-[hsl(var(--red)/0.15)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all bg-red-50">
+                      <ArrowRight className="w-4 h-4 text-[hsl(var(--red))]" />
+                    </div>
                   </div>
-                  
-                  {/* Content */}
-                  <div className="p-4 sm:p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 group-hover:text-[hsl(var(--red))] transition-colors">
                       {service.title}
                     </h3>
-                    
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-sm text-gray-500 leading-relaxed">
                       {service.description}
                     </p>
-                    
-                    <div className="flex items-center text-accent font-medium">
-                      Learn More
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
-                    </div>
                   </div>
                 </div>
               </Link>

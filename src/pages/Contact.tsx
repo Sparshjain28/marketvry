@@ -78,14 +78,14 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-navy pt-32 pb-20">
+      <section className="bg-[hsl(var(--navy))] pt-32 pb-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <span className="text-accent font-semibold tracking-wide uppercase text-sm">
+            <span className="text-[hsl(var(--red))] font-semibold tracking-wide uppercase text-sm">
               Contact Us
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-4 mb-6">
@@ -123,8 +123,8 @@ const Contact = () => {
                     transition={{ delay: index * 0.1 }}
                     className="flex gap-4"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-6 h-6 text-accent" />
+                    <div className="w-12 h-12 rounded-xl bg-[hsl(var(--red)/0.1)] flex items-center justify-center flex-shrink-0">
+                      <info.icon className="w-6 h-6 text-[hsl(var(--red))]" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">{info.title}</h3>
@@ -137,7 +137,7 @@ const Contact = () => {
 
               {/* Map placeholder */}
               <div className="mt-8">
-                <div className="aspect-square rounded-2xl bg-secondary flex items-center justify-center overflow-hidden">
+                <div className="aspect-square rounded-2xl bg-gray-section flex items-center justify-center overflow-hidden">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.99973087887!2d75.65046970450029!3d26.88514447338251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1234567890"
                     width="100%"
@@ -161,7 +161,7 @@ const Contact = () => {
             >
               <div className="bg-card border border-border rounded-3xl p-8 md:p-12">
                 <div className="flex items-center gap-3 mb-8">
-                  <MessageSquare className="w-8 h-8 text-accent" />
+                  <MessageSquare className="w-8 h-8 text-[hsl(var(--red))]" />
                   <h2 className="text-2xl font-bold text-foreground">
                     Send Us a Message
                   </h2>
@@ -225,7 +225,7 @@ const Contact = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, service: e.target.value })
                         }
-                        className="w-full h-12 rounded-xl border border-input bg-background px-4 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                        className="w-full h-12 rounded-xl border border-input bg-background px-4 text-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--red))]"
                       >
                         <option value="">Select a service</option>
                         <option value="digital-marketing">Digital Marketing</option>
@@ -277,7 +277,7 @@ const Contact = () => {
                       "No Obligation",
                     ].map((item) => (
                       <div key={item} className="flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-accent" />
+                        <CheckCircle className="w-5 h-5 text-[hsl(var(--red))]" />
                         <span className="text-muted-foreground text-sm">{item}</span>
                       </div>
                     ))}
@@ -290,7 +290,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Preview */}
-      <section className="section-padding bg-secondary">
+      <section className="section-padding bg-gray-section">
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

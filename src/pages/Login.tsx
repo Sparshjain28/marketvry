@@ -6,8 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
-import marketvryLogo from "@/assets/marketvry-logo.svg";
-import marketvryLogoWhite from "@/assets/marketvry-logo-white.svg";
+import logo from "@/assets/logo.png";
 
 const features = [
   {
@@ -58,7 +57,7 @@ const Login = () => {
         <div className="relative z-10 flex flex-col justify-center px-12 xl:px-16">
           <Link to="/">
             <img 
-              src={marketvryLogoWhite} 
+              src={logo} 
               alt="Marketvry" 
               className="h-14 w-auto mb-12"
             />
@@ -114,7 +113,7 @@ const Login = () => {
         <div className="lg:hidden p-6 flex justify-center border-b border-border">
           <Link to="/">
             <img 
-              src={marketvryLogo} 
+              src={logo} 
               alt="Marketvry" 
               className="h-10 w-auto"
             />

@@ -10,9 +10,9 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <div className="flex flex-col min-h-screen w-full relative">
       <Navbar />
-      <main className="flex-grow w-full pb-16 lg:pb-0">{children}</main>
+      <main className="flex-grow w-full pb-16 lg:pb-0 relative z-10">{children}</main>
       <Footer />
       <MobileBottomNav />
       <WhatsAppWidget phoneNumber="1234567890" message="Hello! I'm interested in your services." />
